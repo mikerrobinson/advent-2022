@@ -20,10 +20,10 @@ lineReader.eachLine('input.txt', function(line, last) {
   }
 
   while (steps > 0) {
-    console.log(`cycle: ${cycle}, v: ${v}`);
-    if ((cycle - 20) % 40 == 0) {
-      strength += cycle * v;
-      console.log(`=====> ${strength}`);
+    let char = (((cycle%40-1)-(v-1))*((cycle%40-1)-(v+1)) <= 0) ? "#" : ".";
+    process.stdout.write(char);
+    if (cycle % 40 == 0) {
+      process.stdout.write("\n")
     }
     cycle++;
     steps--;
